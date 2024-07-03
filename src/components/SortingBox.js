@@ -3,10 +3,6 @@ import { Box, Select, MenuItem, FormControl, InputLabel } from '@mui/material';
 
 const SortingBox = ({ handleSelectedSort }) => {
   const [value, setValue] = useState("")
-  // const handleChange = (event) => {
-  //   setValue(event.target.value)
-  //   handleSelectedSort(value);
-  // };
 
   return (
     <Box sx={{ marginBottom: 2 }}>

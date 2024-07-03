@@ -3,8 +3,7 @@
  */
 
 import React, { useEffect, useState } from 'react';
-import { Grid, Card, CardHeader, CardContent } from '@mui/material';
-import { Typography, List, ListItem, handleCheckboxToggle, Checkbox, checkedItems, ListItemText, Box } from '@mui/material';
+import { Typography, List, ListItem, Checkbox, ListItemText, Box } from '@mui/material';
 
 
 const Filters = ({ onFilterChange }) => {

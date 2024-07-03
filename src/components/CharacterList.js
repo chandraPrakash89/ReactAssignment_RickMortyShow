@@ -3,39 +3,7 @@
  */
 
 import React from 'react';
-import { Grid, Box, Card, CardContent, CardMedia, Typography } from '@mui/material';
-
-// Mock data (replace with actual fetched data)
-const mockData = [
-  {
-    id: 1,
-    name: 'Pilot',
-    image: 'https://rickandmortyapi.com/api/character/avatar/1.jpeg',
-    air_date: 'December 2, 2013',
-    episode: 'S01E01',
-  },
-  {
-    id: 2,
-    name: 'Lawnmower Dog',
-    image: 'https://rickandmortyapi.com/api/character/avatar/2.jpeg',
-    air_date: 'December 9, 2013',
-    episode: 'S01E02',
-  },
-  {
-    id: 3,
-    name: 'Anatomy Park',
-    image: 'https://rickandmortyapi.com/api/character/avatar/3.jpeg',
-    air_date: 'December 16, 2013',
-    episode: 'S01E03',
-  },
-  {
-    id: 4,
-    name: 'M. Night Shaym-Aliens!',
-    image: 'https://rickandmortyapi.com/api/character/avatar/4.jpeg',
-    air_date: 'January 13, 2014',
-    episode: 'S01E04',
-  },
-];
+import { Grid, Card, CardContent, CardMedia, Typography } from '@mui/material';
 
 function calculateYearsAgo(createdDate) {
   const currentDate = new Date(); // Current date
@@ -82,7 +50,7 @@ const ShowCard = ({ show }) => {
 
 
 const CharacterList = (props) => {
-  console.log(props, 'CharacterList'); // Logging props here
+  console.log(props, 'CharacterList'); 
 
   const { data } = props;
 
