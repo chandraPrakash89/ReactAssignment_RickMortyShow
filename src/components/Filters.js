@@ -4,21 +4,21 @@
 
 import React, { useEffect, useState } from 'react';
 import { Typography, List, ListItem, Checkbox, ListItemText, Box } from '@mui/material';
+import SelectedFilters from './SelectedFilters'
 
 
 const Filters = ({ onFilterChange }) => {
 
   const [checkedItems, setCheckedItems] = useState({});
 
-  useEffect(()=>{
-    console.log(checkedItems, "checkedItems");
-    // <CharacterList data={data} />
-  },[checkedItems])
+  useEffect(() => {
+    onFilterChange(checkedItems);
+  }, [checkedItems])
 
-  const handleFilterChange = (e) => {
-    const { name, value } = e.target;
-    onFilterChange(name, value);
-  };
+  // const handleFilterChange = (e) => {
+  //   const { name, value } = e.target;
+  //   onFilterChange(name, value);
+  // };
 
   // Function to handle checkbox toggle
   const handleCheckboxToggle = (item, subItem) => {
@@ -43,16 +43,16 @@ const Filters = ({ onFilterChange }) => {
   const data =
     [
       {
-        heading: "Species",
-        subData: ["Human", "Mythology", "Other Species"]
+        heading: "species",
+        subData: ["Human", "Alien"]
       },
       {
-        heading: "Gender",
+        heading: "gender",
         subData: ["Male", "Female"]
       },
       {
-        heading: "Origin",
-        subData: ["Unknown", "Post-Apocalyptic Earth", "Nuptia 4", "Other Origins"]
+        heading: "origin",
+        subData: ["Earth (C-137)", "unknown", "Earth (Replacement Dimension)", "Abadango"]
       }];
 
 
@@ -60,7 +60,7 @@ const Filters = ({ onFilterChange }) => {
     <div>
       {data.map((item, index) => (
         <Box key={index} border={1} mb={3}>
-          <Typography variant="h6" gutterBottom sx={{paddingTop:"16px", paddingLeft:"16px"}}>
+          <Typography variant="h6" gutterBottom sx={{ paddingTop: "16px", paddingLeft: "16px" }}>
             {item.heading}
           </Typography>
           {/* Render checkboxes */}
@@ -79,7 +79,15 @@ const Filters = ({ onFilterChange }) => {
           </List>
         </Box>
       ))}
+
+      <SelectedFilters
+        checkedItems={checkedItems}
+
+      />
+
     </div>
+
+
 
   );
 };

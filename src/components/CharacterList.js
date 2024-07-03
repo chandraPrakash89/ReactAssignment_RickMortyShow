@@ -20,7 +20,7 @@ function calculateYearsAgo(createdDate) {
 const ShowCard = ({ show }) => {
   const { name, id, created, status, gender, image, species, origin, location } = show;
 
-  console.log('show', show);
+ 
   return (<Card>
     <CardMedia
       component="img"
@@ -50,7 +50,7 @@ const ShowCard = ({ show }) => {
 
 
 const CharacterList = (props) => {
-  console.log(props, 'CharacterList'); 
+
 
   const { data } = props;
 
