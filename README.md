@@ -8,14 +8,19 @@ Attched Screenshot from local system for all required functionality mentioned in
 # Screenshot of Local
 
 Home:
-![Screenshot](https://github.com/chandraPrakash89/ReactAssignment_RickMortyShow/tree/main/src/local_screenshots/home.jpg)
+![Screenshot](https://github.com/chandraPrakash89/ReactAssignment_RickMortyShow/tree/main/src/local_screenshots/Home-page.jpg)
 <br/>
 
 Filter:
-![Screenshot](https://github.com/chandraPrakash89/ReactAssignment_RickMortyShow/tree/main/src/local_screenshots/filter.jpg) 
+![Screenshot](https://github.com/chandraPrakash89/ReactAssignment_RickMortyShow/tree/main/src/local_screenshots/filter-alien.jpg) 
 <br/>
 
 Sort By Id:
-![Screenshot](https://github.com/chandraPrakash89/ReactAssignment_RickMortyShow/tree/main/src/local_screenshots/sort-by-id.jpg)
+![Screenshot](https://github.com/chandraPrakash89/ReactAssignment_RickMortyShow/tree/main/src/local_screenshots/sorting.jpg)<br />
+
+Search:
+![Screenshot](https://github.com/chandraPrakash89/ReactAssignment_RickMortyShow/tree/main/src/local_screenshots/search-by-name-morty.jpg)
+
+
 
 
