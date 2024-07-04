@@ -7,13 +7,13 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
 
-const SearchBox = () => {
+const SearchBox = ({ onSearchChange }) => {
   const [inputValue, setInputValue] = useState('');
 
   const handleSubmit = (event) => {
     event.preventDefault();
     // Handle submission logic here
-    console.log('Submitted value:', inputValue);
+    onSearchChange(inputValue)
     // Reset input field
     setInputValue('');
   };

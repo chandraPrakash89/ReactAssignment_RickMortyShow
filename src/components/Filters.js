@@ -3,9 +3,7 @@
  */
 
 import React, { useEffect, useState } from 'react';
-import { Typography, List, ListItem, Checkbox, ListItemText, Box } from '@mui/material';
-import SelectedFilters from './SelectedFilters'
-
+import { Typography, Grid, List, ListItem, Checkbox, ListItemText, Box } from '@mui/material';
 
 const Filters = ({ onFilterChange }) => {
 
@@ -15,11 +13,7 @@ const Filters = ({ onFilterChange }) => {
     onFilterChange(checkedItems);
   }, [checkedItems])
 
-  // const handleFilterChange = (e) => {
-  //   const { name, value } = e.target;
-  //   onFilterChange(name, value);
-  // };
-
+ 
   // Function to handle checkbox toggle
   const handleCheckboxToggle = (item, subItem) => {
     const isChecked = checkedItems[item.heading]?.includes(subItem) || false;
@@ -79,16 +73,13 @@ const Filters = ({ onFilterChange }) => {
           </List>
         </Box>
       ))}
+      {/* <Grid item xs={12} md={12} spacing={2}>
+        <SelectedFilters
+          checkedItems={checkedItems}
 
-      <SelectedFilters
-        checkedItems={checkedItems}
-
-      />
-
+        />
+      </Grid> */}
     </div>
-
-
-
   );
 };
 

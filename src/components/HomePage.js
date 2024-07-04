@@ -8,21 +8,13 @@ import axios from 'axios';
 import { Container, Grid, Box, Card, CardHeader, CardContent } from '@mui/material';
 
 const HomePage = () => {
-    const [filters, setFilters] = useState({ species: '', gender: '', origin: '' });
-    const [searchQuery, setSearchQuery] = useState('');
     const [data, setData] = useState([]);
     const [filterData, setFilterData] = useState([]);
-    const [characters, setCharacters] = useState(null);
-
-
+    const [selectedFilter, setSelectedFilter] = useState({});
 
     useEffect(() => {
         fetchData();
     }, [])
-
-    useEffect(() => {
-        console.log(data, "data");
-    }, [data])
 
     const fetchData = async () => {
         try {
@@ -37,57 +29,46 @@ const HomePage = () => {
 
     // Function to filter the results
     function filterResults(originalData, criteria) {
-        // return originalData?.filter(character => {
-        //     return (
-        //         criteria?.species?.includes(character.species) &&
-        //         criteria?.gender?.includes(character.gender) 
-        //         // criteria?.origin?.name.includes(character.origin)  
-        //     );
-        // });
-        // Check if originalData or criteria is null or undefined
+        // Check if originalData or checked item is null or undefined
         if (!originalData || !criteria) {
             return [];
         }
-        
-
-        return originalData.filter(character => {
-            // Check if species and gender are included in criteria and match character properties
-            return (
-                (!criteria.species || criteria.species.includes(character.species)) &&
-                (!criteria.gender || criteria.gender.includes(character.gender)) &&
-                (!criteria.origin || criteria?.origin.includes(character.origin?.name))  
+        if (typeof criteria === 'string') {
+            //search on bases of name
+            return originalData.filter(character =>
+                character.name.toLowerCase().includes(criteria)
             );
-        });
 
-
+        } else {
+            //search on bases of filter obj
+            return originalData.filter(character => {
+                return (
+                    (!criteria.species || criteria.species.includes(character.species)) &&
+                    (!criteria.gender || criteria.gender.includes(character.gender)) &&
+                    (!criteria.origin || criteria?.origin.includes(character.origin?.name))
+                );
+            });
+        }
     }
 
     const handleFilterChange = async (checkedItems) => {
-        console.log(checkedItems, "checkedItems");
-        console.log(data, "data1");
-
-        if(!checkedItems?.species?.length && !checkedItems?.gender?.length && !checkedItems?.origin?.length) {
+        setSelectedFilter(checkedItems)
+        if (!checkedItems?.species?.length && !checkedItems?.gender?.length && !checkedItems?.origin?.length) {
             setFilterData(data);
             return;
         }
-
         const filteredResults = await filterResults(data, checkedItems);
-        console.log("filteredResults++++++++++", filteredResults);
-
-        // setData(filteredResults)
         setFilterData(filteredResults);
-
     };
 
-    const handleSearchChange = (value) => {
-        setSearchQuery(value);
+    const handleSearchChange = async (value) => {
+        const nameFilter = await filterResults(data, value);
+        setFilterData(nameFilter);
     };
 
 
     const handleSelectedSort = (sortValue) => {
-       
         const newData = [...filterData];
-
         if (sortValue === "asc") {
             newData.sort((a, b) => a.id - b.id);
         } else if (sortValue === "desc") {
@@ -104,7 +85,6 @@ const HomePage = () => {
                 justifyContent="center"
                 alignItems="center"
                 minHeight="100vh"
-                // bgcolor="#f0f0f0"
                 marginTop={4}
             >
                 <Container>
@@ -122,7 +102,8 @@ const HomePage = () => {
                         {/* Center section with selected filter items */}
                         <Grid item xs={12} md={9}>
                             <Grid item xs={12} md={12} spacing={2}>
-                                <SelectedFilters filters={filters} />
+                                <SelectedFilters selectedFilter={selectedFilter} />
+
                             </Grid>
                             <Grid container spacing={2} sx={{ marginTop: "24px" }}>
                                 <Grid item xs={12} md={8}>

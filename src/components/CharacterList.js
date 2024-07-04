@@ -1,5 +1,5 @@
 /**
- * will render each character's data fetched from the API.
+ * Render each character's data fetched from the API.
  */
 
 import React from 'react';
@@ -20,7 +20,7 @@ function calculateYearsAgo(createdDate) {
 const ShowCard = ({ show }) => {
   const { name, id, created, status, gender, image, species, origin, location } = show;
 
- 
+
   return (<Card>
     <CardMedia
       component="img"
@@ -36,12 +36,12 @@ const ShowCard = ({ show }) => {
         id : {id} - {calculateYearsAgo(created)}
       </Typography>
 
-      <Typography variant="body2" color="text.secondary" sx={{paddingTop:"16px", fontSize: '12px'}}>
-        <strong><span style={{color:"#E2DFD2"}}>STATUS:</span></strong> <span style={{color:"#FFBF00"}}>{status}</span><br /><hr/>
-        <strong><span style={{color:"#E2DFD2"}}>SPECIES:</span></strong> <span style={{color:"#FFBF00"}}>{species}</span><br /><hr/>
-        <strong><span style={{color:"#E2DFD2"}}>GENDER:</span></strong> <span style={{color:"#FFBF00"}}>{gender}</span><br /><hr/>
-        <strong><span style={{color:"#E2DFD2"}}>ORIGIN:</span></strong> <span style={{color:"#FFBF00"}}>{origin.name}</span><br /><hr/>
-        <strong><span style={{color:"#E2DFD2"}}>LAST LOCATION:</span></strong> <span style={{color:"#FFBF00"}}>{location.name}</span>
+      <Typography variant="body2" color="text.secondary" sx={{ paddingTop: "16px", fontSize: '12px' }}>
+        <strong><span style={{ color: "#E2DFD2" }}>STATUS:</span></strong> <span style={{ color: "#FFBF00" }}>{status}</span><br /><hr />
+        <strong><span style={{ color: "#E2DFD2" }}>SPECIES:</span></strong> <span style={{ color: "#FFBF00" }}>{species}</span><br /><hr />
+        <strong><span style={{ color: "#E2DFD2" }}>GENDER:</span></strong> <span style={{ color: "#FFBF00" }}>{gender}</span><br /><hr />
+        <strong><span style={{ color: "#E2DFD2" }}>ORIGIN:</span></strong> <span style={{ color: "#FFBF00" }}>{origin.name}</span><br /><hr />
+        <strong><span style={{ color: "#E2DFD2" }}>LAST LOCATION:</span></strong> <span style={{ color: "#FFBF00" }}>{location.name}</span>
       </Typography>
     </CardContent>
   </Card>)
@@ -50,10 +50,7 @@ const ShowCard = ({ show }) => {
 
 
 const CharacterList = (props) => {
-
-
   const { data } = props;
-
   return (
     <Grid container spacing={1}>
       {data && data.map((show) => (
